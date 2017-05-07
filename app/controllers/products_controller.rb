@@ -10,9 +10,11 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @categories = Category.all
   end
 
   def edit
+    @categories = Category.all
   end
 
   def create
@@ -57,6 +59,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :brand, :quantity, :price, :description, :rating, :category_id)
+      params.require(:product).permit(:name, :brand, :quantity, :price, 
+                                      :description, :rating, :category_id, :image)
     end
 end
