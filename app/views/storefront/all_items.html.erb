@@ -1,44 +1,5 @@
 <h1>Welcome to Amazon!</h1>
 <h3>...where shopping is a breeze!</h3>
 <hr>
-<div class='container'>
-  <div class='row'>
-    <%@products.each do |product| %>
-      <div class="col-md-4 panel panel-default">
-        <div class='center-it' style ="height:130px;">
-          <p><%= image_tag product.image.url(:thumb) %></p>
-        </div>
-        <p>
-          <a href="#" data-toggle="modal" data-target="#myModal_<%= product.id %>">
-            <span class="glyphicon glyphicon-plus"></span> Quick Info
-          </a>
-        </p>
-        <br> 
-        <h3><%= link_to product.name, product %></h3>
-        <p>Made by: <%= product.brand %></p> 
-        <!-- Modal -->   
-        <div class="modal fade" id="myModal_<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel"><%= product.name %></h4>
-              </div>
-              <div class="modal-body">
-                <p><%= number_to_currency(product.price) %></p>
-                <p><%= product.description %></p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal --> 
-      </div>
-    <% end %>
-  </div>
-</div>
 
-
-
-
+<%= render 'productdisplay' %>
