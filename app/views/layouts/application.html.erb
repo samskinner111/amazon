@@ -28,8 +28,26 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><%= link_to 'Storefront', root_path %></li>
             <li><%= link_to 'Add Product', new_product_path %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-left">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <% @categories.each do |cat| %>
+                  <li><%= link_to cat.name, by_category_path(category_id: cat.id)%></li>
+                <% end %>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Brands<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <% @brands.each do |brand| %>
+                   <li><%= link_to brand, by_brand_path(brand: brand) %></li>
+                <% end %>
+                <li><%= link_to 'All', root_path %></li>
+              </ul>
+            </li> 
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
@@ -37,7 +55,7 @@
               <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
             <% else %>
               <li><%= link_to "Sign Up",  new_user_registration_path %></li>
-            <li><%= link_to "Forgot Password",  new_user_password_path %></li>
+              <li><%= link_to "Forgot Password",  new_user_password_path %></li>
             <% end %>
           </ul>
         </div><!-- /.navbar-collapse -->
