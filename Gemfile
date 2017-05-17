@@ -21,8 +21,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
-gem 'paperclip' 
 gem 'cancancan'
+gem 'paperclip' 
+gem 'stripe'
+gem 'figaro'
 gem 'hirb'      
 
 group :development, :test do
