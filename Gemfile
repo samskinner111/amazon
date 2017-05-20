@@ -6,8 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.0.2'
-gem 'sqlite3'
-gem 'puma', '~> 3.0'
+gem 'puma', '>= 3.8.2'
 
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
@@ -28,6 +27,7 @@ gem 'figaro'
 gem 'hirb'      
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'byebug', platform: :mri
 end
 
@@ -38,6 +38,11 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
   gem 'binding_of_caller'
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor', '0.0.2'
 end
 
 
